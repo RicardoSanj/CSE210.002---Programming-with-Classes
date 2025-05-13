@@ -4,65 +4,55 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Ask the user for their grade percentage
-        Console.Write("Enter your grade percentage: ");
-        int percentage = int.Parse(Console.ReadLine());
-        string letterGrade = "";
+        Console.Write("What is your grade percentage? ");
+        string input = Console.ReadLine();
+        int grade = int.Parse(input);
+
+        string letter = "";
         string sign = "";
-        // Determine the letter grade based on the percentage
-        if (percentage >= 90)
+
+        if (grade >= 90)
         {
-            letterGrade = "A";
+            letter = "A";
         }
-        else if (percentage >= 80)
+        else if (grade >= 80)
         {
-            letterGrade = "B";
+            letter = "B";
         }
-        else if (percentage >= 70)
+        else if (grade >= 70)
         {
-            letterGrade = "C";
+            letter = "C";
         }
-        else if (percentage >= 60)
+        else if (grade >= 60)
         {
-            letterGrade = "D";
+            letter = "D";
         }
         else
         {
-            letterGrade = "F";
+            letter = "F";
         }
-        // Get the last digit of the percentage to determine the sign
-        int lastDigit = percentage % 10;
-        // Add "+" or "-" sign only for grades that are not A or F
-        if (letterGrade != "F" && letterGrade != "A")
+
+        if (grade >= 60)
         {
-            if (lastDigit >= 7)
+            if (grade % 10 >= 7 && letter != "A")
             {
                 sign = "+";
             }
-            else if (lastDigit < 3)
+            else if (grade % 10 < 3)
             {
                 sign = "-";
             }
         }
-        else if (letterGrade == "A")
+
+        Console.WriteLine($"Your grade is: {letter}{sign}");
+
+        if (grade >= 70)
         {
-            // Only allow A or A-, never A+
-            if (lastDigit < 3)
-            {
-                sign = "-";
-            }
-        }
-        // Do not add signs to F grades (no F+ or F-)
-        // Display pass/fail message based on the grade
-        if (percentage >= 70)
-        {
-            Console.WriteLine("Congratulations! You passed the course.");
+            Console.WriteLine("Congratulations! You passed!");
         }
         else
         {
-            Console.WriteLine("You did not pass. Keep trying and don’t give up!");
+            Console.WriteLine("Better luck next time.");
         }
-        // Display the final grade with sign (if any)
-        Console.WriteLine($"Your final grade is: {letterGrade}{sign}");
     }
 }
