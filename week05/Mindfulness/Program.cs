@@ -8,11 +8,13 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("Mindfulness Program");
-            Console.WriteLine("1. Start Breathing Activity");
-            Console.WriteLine("2. Start Reflection Activity");
-            Console.WriteLine("3. Start Listing Activity");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("-------------------");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Exit");
             Console.Write("Select an option: ");
+
             string choice = Console.ReadLine();
 
             Activity activity = null;
@@ -29,14 +31,17 @@ class Program
                     activity = new ListingActivity();
                     break;
                 case "4":
-                    return;
+                    return; // Salir del programa
                 default:
-                    Console.WriteLine("Invalid choice. Press Enter to continue.");
+                    Console.WriteLine("Invalid option. Press Enter to try again.");
                     Console.ReadLine();
                     continue;
             }
 
-            activity.Start();
+            activity.PerformActivity();
+
+            Console.WriteLine("Press Enter to return to the main menu.");
+            Console.ReadLine();
         }
     }
 }
