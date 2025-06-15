@@ -1,22 +1,19 @@
+
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 public class ListingActivity : Activity
 {
     private string[] _prompts = {
-        "Who are people that you appreciate?",
-        "What are personal strengths of yours?",
-        "Who are people that you have helped this week?",
-        "When have you felt the Holy Ghost this month?",
-        "Who are some of your personal heroes?"
+        "List things you are grateful for:",
+        "List people who have helped you:",
+        "List moments that made you smile recently:"
     };
 
-    public ListingActivity() : base(
-        "Listing Activity",
-        "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."
-    )
+    public ListingActivity()
     {
+        SetName("Listing");
+        SetDescription("This activity helps you reflect on good things in your life by listing them.");
     }
 
     public override void PerformActivity()
@@ -27,19 +24,16 @@ public class ListingActivity : Activity
         string prompt = _prompts[rnd.Next(_prompts.Length)];
         Console.WriteLine();
         Console.WriteLine(prompt);
-        Console.WriteLine("You have 5 seconds to think...");
+        Console.WriteLine("You may begin listing items. Press Enter after each item.");
+        Console.WriteLine("You have " + GetDuration() + " seconds...");
         ShowCountdown(5);
 
         List<string> items = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
 
-        DateTime startTime = DateTime.Now;
-        int duration = GetDuration();
-
-        Console.WriteLine("Start listing items. Press Enter after each one:");
-
-        while ((DateTime.Now - startTime).TotalSeconds < duration)
+        while (DateTime.Now < endTime)
         {
-            if (Console.KeyAvailable)
+            if (Console.KeyAvailable || Console.In.Peek() != -1)
             {
                 string input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
@@ -50,7 +44,6 @@ public class ListingActivity : Activity
         }
 
         Console.WriteLine($"You listed {items.Count} items.");
-
         DisplayEndingMessage();
     }
 }
