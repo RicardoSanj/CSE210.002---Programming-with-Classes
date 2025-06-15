@@ -1,38 +1,48 @@
-
 using System;
+using System.Threading;
+using System.Collections.Generic;
 
 public class ReflectionActivity : Activity
 {
-    private string[] _prompts = {
-        "Think of a time when you overcame a challenge.",
-        "Think of a moment where you felt truly at peace."
-    };
-
-    private string[] _questions = {
-        "Why was this experience meaningful to you?",
-        "How can you apply this experience to your life today?"
-    };
-
-    public ReflectionActivity()
+    private List<string> _prompts = new List<string>
     {
-        SetName("Reflection");
-        SetDescription("This activity will help you reflect on meaningful experiences in your life.");
+        "Think of a time when you stood up for someone else.",
+        "Think of a time when you did something really difficult.",
+        "Think of a time when you helped someone in need.",
+        "Think of a time when you did something truly selfless."
+    };
+
+    private List<string> _questions = new List<string>
+    {
+        "Why was this experience meaningful to you?",
+        "Have you ever done anything like this before?",
+        "How did you get started?",
+        "How did you feel when it was complete?",
+        "What made this time different?",
+        "What is your favorite thing about this experience?",
+        "What could you learn from this experience?",
+        "What did you learn about yourself?",
+        "How can you keep this in mind in the future?"
+    };
+
+    public ReflectionActivity() : base("Reflection Activity",
+        "This activity will help you reflect on times in your life when you have shown strength and resilience.")
+    {
     }
 
     public override void PerformActivity()
     {
         DisplayStartingMessage();
-        Random rnd = new Random();
-        string prompt = _prompts[rnd.Next(_prompts.Length)];
-        Console.WriteLine(prompt);
-        Console.WriteLine("Press Enter when you have something in mind.");
-        Console.ReadLine();
-        Console.WriteLine("Now ponder the following questions:");
-        Thread.Sleep(3000);
+        Random rand = new Random();
+        Console.WriteLine(_prompts[rand.Next(_prompts.Count)]);
+        ShowSpinner(5);
+        int duration = GetDuration();
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
 
-        foreach (string question in _questions)
+        while (DateTime.Now < endTime)
         {
-            Console.WriteLine(question);
+            string question = _questions[rand.Next(_questions.Count)];
+            Console.WriteLine("> " + question);
             ShowSpinner(5);
         }
 
