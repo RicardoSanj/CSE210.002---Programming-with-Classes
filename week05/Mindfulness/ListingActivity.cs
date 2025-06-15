@@ -1,45 +1,42 @@
-
 using System;
+using System.Threading;
 using System.Collections.Generic;
 
 public class ListingActivity : Activity
 {
-    private string[] _prompts = {
-        "List things you are grateful for:",
-        "List people who have helped you:",
-        "List moments that made you smile recently:"
+    private List<string> _prompts = new List<string>
+    {
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+        "Who are people that you have helped this week?",
+        "When have you felt the Holy Ghost this month?",
+        "Who are some of your personal heroes?"
     };
 
-    public ListingActivity()
+    public ListingActivity() : base("Listing Activity",
+        "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.")
     {
-        SetName("Listing");
-        SetDescription("This activity helps you reflect on good things in your life by listing them.");
     }
 
     public override void PerformActivity()
     {
         DisplayStartingMessage();
-
-        Random rnd = new Random();
-        string prompt = _prompts[rnd.Next(_prompts.Length)];
-        Console.WriteLine();
-        Console.WriteLine(prompt);
-        Console.WriteLine("You may begin listing items. Press Enter after each item.");
-        Console.WriteLine("You have " + GetDuration() + " seconds...");
-        ShowCountdown(5);
+        Random rand = new Random();
+        Console.WriteLine(_prompts[rand.Next(_prompts.Count)]);
+        Console.WriteLine("You may begin listing items in:");
+        ShowSpinner(5);
 
         List<string> items = new List<string>();
-        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+        int duration = GetDuration();
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
 
         while (DateTime.Now < endTime)
         {
-            if (Console.KeyAvailable || Console.In.Peek() != -1)
+            Console.Write("Item: ");
+            string item = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(item))
             {
-                string input = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(input))
-                {
-                    items.Add(input);
-                }
+                items.Add(item);
             }
         }
 
