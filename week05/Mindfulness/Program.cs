@@ -1,3 +1,6 @@
+// EXTRA: This program exceeds basic requirements by modularizing each activity into its own class, adding spinner animations for pausing,
+// and handling invalid input gracefully. It also uses countdown and progress indicators to enhance user experience.
+
 using System;
 
 class Program
@@ -8,40 +11,37 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("Mindfulness Program");
-            Console.WriteLine("-------------------");
-            Console.WriteLine("1. Breathing Activity");
-            Console.WriteLine("2. Reflection Activity");
-            Console.WriteLine("3. Listing Activity");
-            Console.WriteLine("4. Exit");
-            Console.Write("Select an option: ");
+            Console.WriteLine("1. Start Breathing Activity");
+            Console.WriteLine("2. Start Reflection Activity");
+            Console.WriteLine("3. Start Listing Activity");
+            Console.WriteLine("4. Quit");
+            Console.Write("Select a choice from the menu: ");
 
             string choice = Console.ReadLine();
 
-            Activity activity = null;
-
-            switch (choice)
+            Activity activity = choice switch
             {
-                case "1":
-                    activity = new BreathingActivity();
-                    break;
-                case "2":
-                    activity = new ReflectionActivity();
-                    break;
-                case "3":
-                    activity = new ListingActivity();
-                    break;
-                case "4":
-                    return; // Salir del programa
-                default:
-                    Console.WriteLine("Invalid option. Press Enter to try again.");
-                    Console.ReadLine();
-                    continue;
+                "1" => new BreathingActivity(),
+                "2" => new ReflectionActivity(),
+                "3" => new ListingActivity(),
+                "4" => null,
+                _ => null
+            };
+
+            if (choice == "4")
+            {
+                Console.WriteLine("Goodbye!");
+                break;
             }
-
-            activity.PerformActivity();
-
-            Console.WriteLine("Press Enter to return to the main menu.");
-            Console.ReadLine();
+            else if (activity != null)
+            {
+                activity.PerformActivity();
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Please select again.");
+                Thread.Sleep(2000);
+            }
         }
     }
 }
