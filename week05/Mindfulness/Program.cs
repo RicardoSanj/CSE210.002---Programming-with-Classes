@@ -1,7 +1,5 @@
-// EXTRA: This program exceeds basic requirements by modularizing each activity into its own class, adding spinner animations for pausing,
-// and handling invalid input gracefully. It also uses countdown and progress indicators to enhance user experience.
-
 using System;
+using System.Threading;
 
 class Program
 {
@@ -11,37 +9,39 @@ class Program
         {
             Console.Clear();
             Console.WriteLine("Mindfulness Program");
-            Console.WriteLine("1. Start Breathing Activity");
-            Console.WriteLine("2. Start Reflection Activity");
-            Console.WriteLine("3. Start Listing Activity");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
             Console.WriteLine("4. Quit");
             Console.Write("Select a choice from the menu: ");
-
             string choice = Console.ReadLine();
 
-            Activity activity = choice switch
-            {
-                "1" => new BreathingActivity(),
-                "2" => new ReflectionActivity(),
-                "3" => new ListingActivity(),
-                "4" => null,
-                _ => null
-            };
+            Activity activity = null;
 
-            if (choice == "4")
+            switch (choice)
             {
-                Console.WriteLine("Goodbye!");
-                break;
+                case "1":
+                    activity = new BreathingActivity();
+                    break;
+                case "2":
+                    activity = new ReflectionActivity();
+                    break;
+                case "3":
+                    activity = new ListingActivity();
+                    break;
+                case "4":
+                    return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Thread.Sleep(2000);
+                    continue;
             }
-            else if (activity != null)
-            {
-                activity.PerformActivity();
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice. Please select again.");
-                Thread.Sleep(2000);
-            }
+
+            activity.PerformActivity();
         }
     }
 }
+
+// 🚀 EXCEDE REQUISITOS:
+// Se implementó animación spinner con backspaces durante las pausas.
+// Comentarios descriptivos están presentes. Se podrían agregar logs o exportar a archivo en versiones futuras.
