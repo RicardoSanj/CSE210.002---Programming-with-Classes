@@ -1,23 +1,24 @@
-
 using System;
+using System.Threading;
 
-public class Activity
+public abstract class Activity
 {
     private string _name;
     private string _description;
     private int _duration;
 
-    public void SetName(string name) => _name = name;
-    public void SetDescription(string description) => _description = description;
-    public void SetDuration(int duration) => _duration = duration;
-    public int GetDuration() => _duration;
+    protected Activity(string name, string description)
+    {
+        _name = name;
+        _description = description;
+    }
 
     public void DisplayStartingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"Starting {_name} Activity");
+        Console.WriteLine($"Starting {_name}...");
         Console.WriteLine(_description);
-        Console.Write("Enter duration in seconds: ");
+        Console.Write("Enter the duration in seconds: ");
         _duration = int.Parse(Console.ReadLine());
         Console.WriteLine("Prepare to begin...");
         ShowSpinner(3);
@@ -25,31 +26,40 @@ public class Activity
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"Good job! You completed {_duration} seconds of the {_name} Activity.");
+        Console.WriteLine("\nWell done!");
+        ShowSpinner(3);
+        Console.WriteLine($"You completed the {_name} for {_duration} seconds.");
         ShowSpinner(3);
     }
 
-    public void ShowSpinner(int seconds)
-    {
-        Console.Write("Processing: ");
-        for (int i = 0; i < seconds; i++)
-        {
-            Console.Write(".");
-            Thread.Sleep(1000);
-        }
-        Console.WriteLine();
-    }
-
-    public void ShowCountdown(int seconds)
+    protected void Pause(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write(" ");
+            Console.Write("\b \b");
         }
-        Console.WriteLine();
     }
 
-    public virtual void PerformActivity() { }
+    protected void ShowSpinner(int seconds)
+    {
+        string[] spinner = { "|", "/", "-", "\\" };
+        int index = 0;
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        while (DateTime.Now < endTime)
+        {
+            Console.Write(spinner[index]);
+            Thread.Sleep(200);
+            Console.Write("\b \b");
+            index = (index + 1) % spinner.Length;
+        }
+    }
+
+    public int GetDuration()
+    {
+        return _duration;
+    }
+
+    public abstract void PerformActivity();
 }
