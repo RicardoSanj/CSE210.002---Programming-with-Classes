@@ -1,55 +1,43 @@
-using System;
-using System.Threading;
 
-public abstract class Activity
+using System;
+
+public class Activity
 {
     private string _name;
     private string _description;
     private int _duration;
 
-    public Activity(string name, string description)
-    {
-        _name = name;
-        _description = description;
-    }
+    public void SetName(string name) => _name = name;
+    public void SetDescription(string description) => _description = description;
+    public void SetDuration(int duration) => _duration = duration;
+    public int GetDuration() => _duration;
 
     public void DisplayStartingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"--- {_name} ---");
-        Console.WriteLine();
+        Console.WriteLine($"Starting {_name} Activity");
         Console.WriteLine(_description);
-        Console.WriteLine();
         Console.Write("Enter duration in seconds: ");
-        while (!int.TryParse(Console.ReadLine(), out _duration) || _duration <= 0)
-        {
-            Console.Write("Invalid input. Enter a positive integer for duration: ");
-        }
-        Console.WriteLine("Get ready...");
+        _duration = int.Parse(Console.ReadLine());
+        Console.WriteLine("Prepare to begin...");
         ShowSpinner(3);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine();
-        Console.WriteLine("Well done!");
-        ShowSpinner(3);
-        Console.WriteLine($"You have completed the {_name} for {_duration} seconds.");
+        Console.WriteLine($"Good job! You completed {_duration} seconds of the {_name} Activity.");
         ShowSpinner(3);
     }
 
     public void ShowSpinner(int seconds)
     {
-        string[] spinner = { "/", "-", "\\", "|" };
-        DateTime startTime = DateTime.Now;
-        int i = 0;
-        while ((DateTime.Now - startTime).TotalSeconds < seconds)
+        Console.Write("Processing: ");
+        for (int i = 0; i < seconds; i++)
         {
-            Console.Write(spinner[i]);
-            Thread.Sleep(250);
-            Console.Write("\b");
-            i = (i + 1) % spinner.Length;
+            Console.Write(".");
+            Thread.Sleep(1000);
         }
+        Console.WriteLine();
     }
 
     public void ShowCountdown(int seconds)
@@ -58,15 +46,10 @@ public abstract class Activity
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Write(" ");
         }
+        Console.WriteLine();
     }
 
-    public int GetDuration()
-    {
-        return _duration;
-    }
-
-    // Método abstracto que obliga a las clases derivadas a implementarlo
-    public abstract void PerformActivity();
+    public virtual void PerformActivity() { }
 }
