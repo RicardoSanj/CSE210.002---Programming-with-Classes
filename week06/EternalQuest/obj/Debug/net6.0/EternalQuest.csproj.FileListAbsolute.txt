@@ -1,0 +1,14 @@
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.AssemblyInfoInputs.cache
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.AssemblyInfo.cs
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.csproj.CoreCompileInputs.cache
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\bin\Debug\net6.0\EternalQuest.exe
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\bin\Debug\net6.0\EternalQuest.deps.json
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\bin\Debug\net6.0\EternalQuest.runtimeconfig.json
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\bin\Debug\net6.0\EternalQuest.dll
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\bin\Debug\net6.0\EternalQuest.pdb
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.dll
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\refint\EternalQuest.dll
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.pdb
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\EternalQuest.genruntimeconfig.cache
+C:\Users\richi\Downloads\EternalQuestProject\EternalQuest\obj\Debug\net6.0\ref\EternalQuest.dll
