@@ -1,0 +1,14 @@
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\bin\Debug\net9.0\ExerciseTrackingApp.exe
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\bin\Debug\net9.0\ExerciseTrackingApp.deps.json
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\bin\Debug\net9.0\ExerciseTrackingApp.runtimeconfig.json
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\bin\Debug\net9.0\ExerciseTrackingApp.dll
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\bin\Debug\net9.0\ExerciseTrackingApp.pdb
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.AssemblyInfoInputs.cache
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.AssemblyInfo.cs
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.csproj.CoreCompileInputs.cache
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.dll
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\refint\ExerciseTrackingApp.dll
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.pdb
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ExerciseTrackingApp.genruntimeconfig.cache
+C:\Users\richi\Downloads\ExerciseTracking (1)\ExerciseTrackingApp\obj\Debug\net9.0\ref\ExerciseTrackingApp.dll
